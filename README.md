@@ -245,9 +245,13 @@ If you use HOACS in your research, please cite:
 
 ## License
 
-This project is provided for **research and educational purposes only**.
+This project is licensed under the **MIT License**.
 
-For commercial use or inquiries, please contact the authors.
+Copyright (c) 2025 **ASTHA Lab, University of Kansas**. All rights reserved.
+
+See the [LICENSE](LICENSE) file for full details.
+
+For commercial use or collaboration inquiries, please contact the authors.
 
 ---
 
