@@ -217,9 +217,10 @@ If you use HOACS in your research, please cite:
 ```bibtex
 @article{hoacs2025,
   title={On the Security of Lightweight Homomorphic Obfuscation for Protecting Secrets Against Hardware Trojans},
+  author={Hossain, Tanvir and Showers, Matthew and Hasan, Mahmudul and Hoque, Tamzidul},
   journal={IACR Transactions on Cryptographic Hardware and Embedded Systems},
   year={2025},
-  note={Submitted}
+  note={Accepted for CHES 2026}
 }
 ```
 
