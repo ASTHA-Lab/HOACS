@@ -262,24 +262,10 @@ int main(void)
                                (uint8_t) 0xf6, (uint8_t) 0x9f, (uint8_t) 0x24, (uint8_t) 0x45, (uint8_t) 0xdf, (uint8_t) 0x4f, (uint8_t) 0x9b, (uint8_t) 0x17, (uint8_t) 0xad, (uint8_t) 0x2b, (uint8_t) 0x41, (uint8_t) 0x7b, (uint8_t) 0xe6, (uint8_t) 0x6c, (uint8_t) 0x37, (uint8_t) 0x10 };
     
 
-    // print text to encrypt, key and IV
-    printf("ECB encrypt verbose:\n\n");
-    printf("plain text:\n");
-    for (i = (uint8_t) 0; i < (uint8_t) 4; ++i)
-    {
-        // phex(plain_text + i * (uint8_t) 16);// Phex loop iterator changes with AES_KEYLEN, not local length
-        for(unsigned j = 0; j < 16; j++)
-        {
-            printf("%.2x ", plain_text[i*16 +j]);
-            if((j+1) % 16 == 0)
-            {
-                printf("\n");
-            }
-        }
-    }
-    printf("\n");
+    printf("RNC-Protected AES Key Expansion\n");
+    printf("================================\n\n");
 
-    printf("key (Plain):\n");
+    printf("Input Key (Plain):\n");
     // phex(key); // Phex loop iterator changes with AES_KEYLEN, not local length
     for(i = 0; i < 16; i++)
     {
@@ -300,7 +286,7 @@ int main(void)
         keyEnc[i] = encode(key[i],ctx.m1,ctx.m2);
         //printf("After encode = %x | %x | %x ",keyEnc[i].u1, keyEnc[i].u2, keyEnc[i]);
     }
-    printf("key (Encoded w/ RNC):\n");
+    printf("\nInput Key (Encoded w/ RNC - Moduli: m1=%d, m2=%d):\n", ctx.m1, ctx.m2);
     for(i = 0; i < 16; i++)
     {
         printf("%.2x,%.2x ", keyEnc[i].u1,keyEnc[i].u2);
@@ -312,16 +298,29 @@ int main(void)
     printf("\n");
     printf("\n");
 
-    // print the resulting cipher as 4 x 16 byte strings
-    printf("ciphertext:\n");
-    printf("Nai kono Cipher Nai -____- \n");
-    // for (int j = 0; j <200 ; j++) {
-    //   printf("The value of ctx RK before is %d = %.2x \n", j, ctx.RoundKey[j]);
-    // }
     AES_init_ctx(&ctx, keyEnc);
 
-    printf("Key Expansion done \n");
-    for (int j = 0; j <32 ; j++) {
-      printf("The value of ctx RK is %d = %.2x \n", j, ctx.RoundKey[j]);
+    printf("\n=== Key Expansion Done ===\n\n");
+
+    printf("Expanded Keys (Encoded w/ RNC) - First 32 values:\n");
+    for (int j = 0; j < 32; j++) {
+      printf("%.2x,%.2x ", ctx.RoundKey[j].u1, ctx.RoundKey[j].u2);
+      if((j+1) % 8 == 0) printf("\n");
     }
+    printf("\n");
+
+    // Decode the expanded round keys to verify correctness
+    uint8_t decodedRoundKeys[AES_keyExpSize];
+    for(int j = 0; j < AES_keyExpSize; j++) {
+        decodedRoundKeys[j] = decode(ctx.RoundKey[j], ctx.m1, ctx.m2, NULL, NULL);
+    }
+
+    printf("Expanded Keys (Decoded from RNC):\n");
+    for(i = 0; i < AES_keyExpSize; i++)
+    {
+        printf("%.2x", decodedRoundKeys[i]);
+        if(i < AES_keyExpSize - 1) printf(",");
+        if((i+1) % 16 == 0) printf("\n");
+    }
+    printf("\n");
 }
