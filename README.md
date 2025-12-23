@@ -201,24 +201,6 @@ For typical configurations (M = 2³², k = 6):
 
 ---
 
-## Performance
-
-### Overhead Comparison
-
-| Framework | Addition | Subtraction | Multiplication |
-|-----------|----------|-------------|----------------|
-| PyAono | 364897× | - | 97222× |
-| SEAL | 228526× | 61666× | 527222× |
-| HElib | 2888× | - | 26.2× |
-| Paillier | 3000× | - | - |
-| ElGamal | - | - | 17222× |
-| **HOACS-C** | **26.04×** | **26.29×** | **25.47×** |
-| **HOACS-IR** | **4.42×** | **3.97×** | **4.16×** |
-
-*HOACS-IR achieves 10³-10⁶× better performance than traditional FHE schemes*
-
----
-
 ## Applications
 
 - **Cryptographic Key Protection**: AES, RSA, elliptic curve cryptography
@@ -245,9 +227,12 @@ If you use HOACS in your research, please cite:
 
 ## License
 
-This project is licensed under the **MIT License**.
+This project is licensed under a **Research License**.
 
 Copyright (c) 2025 **ASTHA Lab, University of Kansas**. All rights reserved.
+
+This software is provided for **research and educational purposes only**.
+Commercial use requires prior written permission from ASTHA Lab.
 
 See the [LICENSE](LICENSE) file for full details.
 
