@@ -31,7 +31,7 @@ HOACS enables programs to execute while keeping sensitive data in an **encoded f
 
 **"On the Security of Lightweight Homomorphic Obfuscation for Protecting Secrets Against Hardware Trojans"**
 
-*IACR Transactions on Cryptographic Hardware and Embedded Systems*
+*Accepted to IACR Transactions on Cryptographic Hardware and Embedded Systems (CHES 2026)*
 
 ---
 
