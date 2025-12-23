@@ -21,11 +21,17 @@ HOACS enables programs to execute while keeping sensitive data in an **encoded f
 
 ## Authors
 
-*This repository contains the implementation of research presented in:*
+**Tanvir Hossain**, **Matthew Showers**, **Mahmudul Hasan**, **Tamzidul Hoque**
+
+*University of Kansas, Lawrence, KS 66045, USA*
+
+*Emails: {tanvir, mds2016, m.hasan, hoque}@ku.edu*
+
+*This repository contains the implementation of research published in:*
 
 **"On the Security of Lightweight Homomorphic Obfuscation for Protecting Secrets Against Hardware Trojans"**
 
-*Submitted to IACR Transactions on Cryptographic Hardware and Embedded Systems*
+*IACR Transactions on Cryptographic Hardware and Embedded Systems*
 
 ---
 
@@ -122,27 +128,6 @@ Automates RNC transformation at the LLVM Intermediate Representation level:
 - **Register Trace Analyzer**: Detects plaintext key exposure in CPU registers
 - **TVLA Framework**: Test Vector Leakage Assessment for side-channel evaluation
 - **Side-Channel Correlation Analysis**: Validates protection against power analysis
-
----
-
-## Repository Structure
-
-```
-HOACS/
-├── AES/                          # AES implementation with RNC protection
-│   ├── KeyExpansion.c           # RNC-protected key expansion
-│   ├── RNC.c/RNC.h              # Core RNC library
-│   └── tiny-AES-c/              # Baseline AES implementation
-├── TVLA/                         # Side-channel analysis suite
-│   └── firmware/                # Embedded test implementations
-├── TVLA-analysis-suite/          # Comprehensive TVLA tools
-├── firmware/                     # Embedded platform implementations
-├── plaincodes/                   # Unprotected baseline implementations
-├── docs/                         # Documentation and analysis
-├── tools/                        # Utility scripts
-├── research_results/             # Experimental data
-└── README.md                     # This file
-```
 
 ---
 
